@@ -1,0 +1,3 @@
+mysql 用的 homebrew 安装的
+退出 mysql exit
+进入 mysql -u root -p 没有密码直接点击 enter

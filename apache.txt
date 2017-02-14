@@ -1,0 +1,4 @@
+sudo apachectl start 开启
+sudo apachectl restart 重启
+sudo apachectl stop 停止
+

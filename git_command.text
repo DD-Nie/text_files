@@ -1,0 +1,36 @@
+
+git reset HEAD file可以把暂缓区的内容清空防止错误的commit
+
+git reset --hard 234u4857 回退到指定目录的版本
+git reset --hard HEAD^ 回退到上一个版本
+git reset --hard HEAD^^ 回退到上上个版本
+git reset --hard HEAD^10 回退到上10个版本
+
+git reflog 查看所有的历史命令
+git add 加入暂缓区
+git add -A 添加所有的文件到暂缓区
+git commit -m “备注信息” 提交命令
+git log 查看所有的日志内容
+git init 初始化仓库
+
+git rm test.txt 删除test.txt 并且保存 git commit -m “删除了test.txt”
+
+
+git remote rm origin 删除远程分支
+git remote add origin git@github.com:DD-Nie/CheckOA.git 添加一个远程库叫origin的库
+要关联一个远程库，使用命令git remote add origin git@server-name:path/repo-name.git；
+关联后，使用命令git push -u origin master第一次推送master分支的所有内容；
+此后，每次本地提交后，只要有必要，就可以使用命令git push origin master推送最新修改；
+
+git clone git@github.com:michaelliao/gitskills.git 克隆代码仓库到本地
+
+要克隆一个仓库，首先必须知道仓库的地址 例如 git@github.com:DD-Nie/CheckOA.git ，然后使用git clone git@github.com:DD-Nie/CheckOA.git 命令克隆。
+Git支持多种协议，包括https，但通过ssh支持的原生git协议速度最快。
+
+
+git branch 查看分支
+git branch <name> 创建分支
+git checkout <name> 切换分支
+git checkout -b <name> 创建加切换分支
+git merge <name> 合并某分支到当前分支
+git branch -d <name> 删除某分支
