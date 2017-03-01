@@ -1,0 +1,97 @@
+Mac下面除了用dmg、pkg来安装软件外，比较方便的还有用MacPorts来帮助你安装其他应用程序，跟BSD中的ports道理一样。MacPorts就像apt-get、yum一样，可以快速安装些软件。
+
+
+MacPorts使用
+更新ports tree和MacPorts版本，强烈推荐第一次运行的时候使用-v参数，显示详细的更新过程。
+sudo port -v selfupdate
+
+搜索索引中的软件
+port search name
+
+安装新软件
+sudo port install name
+
+卸载软件
+sudo port uninstall name
+
+查看有更新的软件以及版本
+port outdated
+
+升级可以更新的软件
+sudo port upgrade outdated
+
+Eclipse的插件需要subclipse需要JavaHL，下面通过MacPorts来安装
+sudo port install subversion-javahlbindings
+
+
+
+port list
+
+列出当前所有的可用软件,如果想查找是否有自己想要的软件时,还是使用search指令方便一些.
+
+port info name
+
+查看软件包的详细信息
+
+port deps name
+
+查看软件包的依赖
+
+port clean --all name
+
+删除软件包安装过程中所产生的一些零时文件
+
+port dependents name
+
+查看哪些软件时依赖与这个软件的.删除一个软件时候，最好先执行一下这个命令.
+
+
+
+
+
+苹果mac破解wifi密码方法和步骤：
+
+1、首先需要确保电脑装有 Xcode 和 MacPorts。Xcode 可以直接从 App Store 免费下载。
+
+MacPorts 前称 DarwinPorts，是一个软件包管理系统，用来简化 Mac OS X 系统上软件的安装。它是一个用来简化自由软件/开放源代码软件的安装的自由/开放源代码项目，与Fink和BSD类ports套件的目标和功能类似。它可以让用户在终端中简单的输入 port install 软件包名称来安装软件包，软件的下载、编译、安装以及它依赖的所有其他软件包的安装都会自动完成。
+
+推荐下载「MacPorts-2.2.1-10.9-Mavericks.pkg」这个版本。
+
+2、安装好 Macport 后，则开始安装Aircrack，打开终端输入命令：
+
+sudo port install aircrack-ng
+
+等待一段时间安装，然后使用mac系统下自带的 airport 进行附近 wifi 信号的监测。
+
+1）首先将 airport 命令引入到用户命令里，在终端输入：
+
+sudo ln -s /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport /usr/sbin/airport
+2）然后在终端内输入如下命令，就能看到 airport 监测到的附近 wifi 信息：
+
+airport -s
+SSID 是 wifi名称，RSSI 是信号强度，CHANNEL 是信道。
+
+3）接着挑选一个信号强的信道进行监听抓包（比如信道1），在终端输入：
+
+sudo airport en1 sniff  1
+
+这时，会提示输入管理员密码，输入时密码是不会显示出来，输入完敲回车就开始监听抓包了。命令中的 en1 是自己电脑的网卡地址，有的电脑可能是 en0，根据自己的实际情况进行输入，查看电脑网卡地址的地方如下：
+
+大概等待2-5分钟就可以按 command + c 组合键退出查看含有抓包的cap文件了，文件所在地址是/tmp，可以使用Finder的前往文件夹功能进入：
+
+可以将cap文件移到我们想保存的地方，也可以不移走（重启后就没有了）。
+
+接下来就进入关键的破解wifi密码的过程了，先在桌面建一个文件夹，取名「wifi」，将字典和cap文件都放到这个文件夹内（假设字典是01.txt，cap文件名是01.cap，在终端输入：
+
+cd ~/Desktop/wifi
+aircrack-ng -w 01.txt 01.cap
+
+就可以看到cap文件内的抓包情况，Encryption中（0 handshake）是抓包失败，（1 handshake）则是抓包成功。图中看到第11行抓包成功，则在「Index number of target network ?」这里输入11后敲回车：
+
+如果cap文件内全是（0 handshake），就按 command + c 组合键退出。重新回到「sudo airport en1 sniff 1」这步进行监听抓包。抓包成功率受到 wifi 信号强弱、电脑与路由器距离远近、路由器是否正处在收发数据状态的影响。总之多试几次、监听时间适当延长些，可以大大提高成功率。
+
+进入到破解过程界面，如图：
+
+
+
+接下来等待破解结果就行了，中断破解过程可以直接按 command + c 组合键退出。破解过程所需时间长短受电脑硬件配置、字典体积大小的影响。如果01.txt字典破解失败，则可以换其它字典进行破解，直到破解成功。
