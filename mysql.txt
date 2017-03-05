@@ -1,3 +1,6 @@
 mysql 用的 homebrew 安装的
-退出 mysql exit
 进入 mysql -u root -p 没有密码直接点击 enter
+进入之后,退出时 exit
+mysql.server start 开启服务
+mysql.server restart 重新开启服务
+mysql.server stop 关闭服务
