@@ -1,0 +1,70 @@
+
+//抓包过程
+
+nhz:Desktop niehaizhou$ ssh 
+usage: ssh [-1246AaCfGgKkMNnqsTtVvXxYy] [-b bind_address] [-c cipher_spec]
+           [-D [bind_address:]port] [-E log_file] [-e escape_char]
+           [-F configfile] [-I pkcs11] [-i identity_file]
+           [-J [user@]host[:port]] [-L address] [-l login_name] [-m mac_spec]
+           [-O ctl_cmd] [-o option] [-p port] [-Q query_option] [-R address]
+           [-S ctl_path] [-W host:port] [-w local_tun[:remote_tun]]
+           [user@]hostname [command]
+nhz:Desktop niehaizhou$ ssh -p 3022 root@192.168.3.1
+The authenticity of host '[192.168.3.1]:3022 ([192.168.3.1]:3022)' can't be established.
+RSA key fingerprint is SHA256:j5ze7hrfPNPVwmctYhFMwsFPkiY31H9on/7IRx4ak+U.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added '[192.168.3.1]:3022' (RSA) to the list of known hosts.
+
+//输入主机密码 password
+root@192.168.3.1's password: 
+
+
+BusyBox v1.22.1 (2015-10-26 10:36:00 CST) built-in shell (ash)
+Enter 'help' for a list of built-in commands.
+
+------------------------------------------------------------------
+|            _____                             _                 |
+|           |  __ \                           | |                |
+|                             __/ |       __/ |                  |
+|                            |___/       |___/                   |
+|                                                                |
+|----------------------------------------------------------------|
+| Gargoyle version 1.8.X    | OpenWrt Barrier Breaker branch     |
+| Gargoyle revision 64538eb | OpenWrt revision r46817            |
+| Built September 21, 2016  | Target  ar71xx/smart_home          |
+------------------------------------------------------------------
+
+//更新包管理工具 opkg
+root@smarthome:~# opkg update
+
+//通过 opkg 安装 tcpdump
+root@smarthome:~# opkg install tcpdump
+
+//开始抓取 192.168.9.133 的数据包 但是没有成功
+root@smarthome:~# tcpdump -n -i br-lan -X host 192.168.9.133
+tcpdump: verbose output suppressed, use -v or -vv for full protocol decode
+listening on br-lan, link-type EN10MB (Ethernet), capture size 65535 bytes
+^C
+0 packets captured
+0 packets received by filter
+0 packets dropped by kernel
+
+// 设置 tcpdump 参数
+root@smarthome:~# tcpdump -n -i br-lan -X
+tcpdump: verbose output suppressed, use -v or -vv for full protocol decode
+listening on br-lan, link-type EN10MB (Ethernet), capture size 65535 bytes
+
+
+//设置监听的 IP 为 192.168.3.133 设备
+root@smarthome:~# tcpdump -n -i br-lan -X host 192.168.3.133
+
+//退出 tcpdump
+root@smarthome:~# exit
+
+
+//重新连接 主机 要求输入密码
+nhz:Desktop niehaizhou$ ssh -p 3022 root@192.168.3.1
+root@192.168.3.1's password: 
+
+
+//control + C      停止抓包
