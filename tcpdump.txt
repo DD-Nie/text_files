@@ -66,5 +66,8 @@ root@smarthome:~# exit
 nhz:Desktop niehaizhou$ ssh -p 3022 root@192.168.3.1
 root@192.168.3.1's password: 
 
+//登录路由后 通过 tcpdump 抓取从 192.168.3.133 到 192.168.3.242 的数据包 包的显示格式为 -n表示以原始的ip地址显示不以名字显示 -i 表示哪个端口 -A 表示以ASC||码显示  后边是数据源 什么也不加(filter 为空) 表示检测 所有经过 br-lan 端口的数据
+————————————   software   —      option     ————————    filter ————————
+root@smarthome:~#             tcpdump         -n -i br-lan -A          host 192.168.3.133 and dst 192.168.3.242 
 
 //control + C      停止抓包
