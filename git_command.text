@@ -39,3 +39,16 @@ git branch -d <name> 删除某分支
 git pull 合并远程仓库的文件
 git push origin master 上传到远程仓库
 
+git init --separate-git-dir=<dir> 将 git 文件放到指定的文件目录下
+
+git branch :查看分支
+git branch [branchname]:创建分支
+git checkout [branchname]:切换到某个分支
+git checkout -b [branchname]: 创建并且切换到新建的分支
+git branch -d [branchname]: 删除某个分支
+
+
+
+
+
+

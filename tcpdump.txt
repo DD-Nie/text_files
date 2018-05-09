@@ -1,7 +1,8 @@
 
 //抓包过程
 
-nhz:Desktop niehaizhou$ ssh 
+//查询
+$ ssh 
 usage: ssh [-1246AaCfGgKkMNnqsTtVvXxYy] [-b bind_address] [-c cipher_spec]
            [-D [bind_address:]port] [-E log_file] [-e escape_char]
            [-F configfile] [-I pkcs11] [-i identity_file]
@@ -9,7 +10,10 @@ usage: ssh [-1246AaCfGgKkMNnqsTtVvXxYy] [-b bind_address] [-c cipher_spec]
            [-O ctl_cmd] [-o option] [-p port] [-Q query_option] [-R address]
            [-S ctl_path] [-W host:port] [-w local_tun[:remote_tun]]
            [user@]hostname [command]
-nhz:Desktop niehaizhou$ ssh -p 3022 root@192.168.3.1
+
+//ssh  端口 用户名@登录主机地址
+$ ssh -p 3022 root@192.168.3.1
+
 The authenticity of host '[192.168.3.1]:3022 ([192.168.3.1]:3022)' can't be established.
 RSA key fingerprint is SHA256:j5ze7hrfPNPVwmctYhFMwsFPkiY31H9on/7IRx4ak+U.
 Are you sure you want to continue connecting (yes/no)? yes
@@ -40,7 +44,7 @@ root@smarthome:~# opkg update
 //通过 opkg 安装 tcpdump
 root@smarthome:~# opkg install tcpdump
 
-//开始抓取 192.168.9.133 的数据包 但是没有成功
+//开始抓取 192.168.9.133 的数据包 
 root@smarthome:~# tcpdump -n -i br-lan -X host 192.168.9.133
 tcpdump: verbose output suppressed, use -v or -vv for full protocol decode
 listening on br-lan, link-type EN10MB (Ethernet), capture size 65535 bytes
@@ -70,4 +74,12 @@ root@192.168.3.1's password:
 ————————————   software   —      option     ————————    filter ————————
 root@smarthome:~#             tcpdump         -n -i br-lan -A          host 192.168.3.133 and dst 192.168.3.242 
 
+tcpdump         -n -i br-lan -A          host 192.168.3.133 and host 192.168.3.242  指定的两个设备之间的信息
+
+tcpdump         -n -i br-lan -A          host 192.168.3.133 and host 192.168.3.242 and udp  指定的两个设备之间的udp信息
+
 //control + C      停止抓包
+
+
+
+详细信息:   百度 tcpdump

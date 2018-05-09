@@ -1,0 +1,37 @@
+
+使用mac电脑制作macOS High Sierra系统版本的U盘安装器（U盘需8G及以上，该U盘将被格式化，所以务必备份重要数据）：
+
+1.打开app store下载macOS High Sierra，并且等待下载完成（默认路径是储存到应用程序，请勿更改）；
+2.连上u盘并且改名为"MyVolume" 不包含引号
+3.打开终端（终端可以通过系统右上角的放大镜搜索终端即可找到），将命令粘贴进去，按回车
+命令：
+
+sudo /Applications/Install\ macOS\ High\ Sierra.app/Contents/Resources/createinstallmedia --volume /Volumes/MyVolume
+
+
+
+4.输入管理员密码，需要盲打（输入的时候看不到），摁回车件；
+
+5.输入"y"，按回车
+
+6.最后，等待终端出现以下字样：
+
+Ready to start.
+
+To continue we need to erase the disk at /Volumes/MyVolume.
+
+If you wish to continue type (Y) then press return: y （注：输入y以继续）
+
+Erasing Disk: 0%... 10%... 20%...100%...
+
+Copying installer files to disk… （注：本条命令大概执行半个小时，视U盘速度而定，请耐心等待）
+
+Copy complete.
+
+Making disk bootable…
+
+Copying boot files…
+
+Copy complete.
+
+Done.

@@ -1,0 +1,86 @@
+
+After iOS 10 you have to define and provide a usage description of all the system’s privacy-sensitive data accessed by your app in Info.plist as below:
+
+Calendar
+
+Key    :  Privacy - Calendars Usage Description    
+Value  :  $(PRODUCT_NAME) calendar events
+Reminder :
+
+Key    :   Privacy - Reminders Usage Description    
+Value  :   $(PRODUCT_NAME) reminder use
+Contact :
+
+Key    :   Privacy - Contacts Usage Description     
+Value  :  $(PRODUCT_NAME) contact use
+Photo :
+
+Key    :  Privacy - Photo Library Usage Description    
+Value  :  $(PRODUCT_NAME) photo use
+Bluetooth Sharing :
+
+Key    :  Privacy - Bluetooth Peripheral Usage Description     
+Value  :  $(PRODUCT_NAME) Bluetooth Peripheral use
+Microphone :
+
+Key    :  Privacy - Microphone Usage Description    
+Value  :  $(PRODUCT_NAME) microphone use
+Camera :
+
+Key    :  Privacy - Camera Usage Description   
+Value  :  $(PRODUCT_NAME) camera use
+Location :
+
+Key    :  Privacy - Location Always Usage Description   
+Value  :  $(PRODUCT_NAME) location use
+
+Key    :  Privacy - Location When In Use Usage Description   
+Value  :  $(PRODUCT_NAME) location use
+Heath :
+
+Key    :  Privacy - Health Share Usage Description   
+Value  :  $(PRODUCT_NAME) heath share use
+
+Key    :  Privacy - Health Update Usage Description   
+Value  :  $(PRODUCT_NAME) heath update use
+HomeKit :
+
+Key    :  Privacy - HomeKit Usage Description   
+Value  :  $(PRODUCT_NAME) home kit use
+Media Library :
+
+Key    :  Privacy - Media Library Usage Description   
+Value  :  $(PRODUCT_NAME) media library use
+Motion :
+
+Key    :  Privacy - Motion Usage Description   
+Value  :  $(PRODUCT_NAME) motion use
+Speech Recognition :
+
+Key    :  Privacy - Speech Recognition Usage Description   
+Value  :  $(PRODUCT_NAME) speech use
+SiriKit :
+
+Key    :  Privacy - Siri Usage Description  
+Value  :  $(PRODUCT_NAME) siri use
+TV Provider :
+
+Key    :  Privacy - TV Provider Usage Description   
+Value  :  $(PRODUCT_NAME) tvProvider use
+You can get detailed information in this link.
+
+
+  	 	
+Privacy - Photo Library Usage Description did it for the error NSPhotoLibraryUsageDescription – Bruno Bieri May 17 at 13:45 
+
+
+i386表示支持iphone模拟器，armv6应用在iphone 3gs上，armv7应用在iphone4，armv7s应用在iphone4s以及iphone5，arm64应用在最新的iphone5s上。
+目前为止Apple移动设备默认指令集（2014.8.22）
+-------------------------------------------------------------------------------------
+armv6 设备： iPhone, iPhone2, iPhone3G, 第一代、第二代 iPod Touch
+armv7 设备： iPhone3GS, iPhone4, iPhone4S
+                      iPad, iPad2, iPad3(The New iPad), iPad mini
+                      iPod Touch 3G, iPod Touch4
+armv7s设备： iPhone5, iPhone5C, iPad4(iPad with Retina Display)
+arm64 设备： iPhone5S, iPad Air, iPad mini2(iPad mini with Retina Display)
+
