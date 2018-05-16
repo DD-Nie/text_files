@@ -56,3 +56,7 @@ git merge test
 
 
 $ git rebase --onto master server client
+
+git add --patch
+
+git log --no-merges
