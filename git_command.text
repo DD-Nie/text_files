@@ -61,3 +61,71 @@ git add --patch
 git log --no-merges
 
 $ git branch nhz/te_xing master 创建分支 用一个 nhz 名词空间 表示作者
+
+Git的配置:
+# 显示当前的Git配置
+$ git config --list
+
+#设置用户名和邮箱，即提交代码时的用户信息
+$ git config [--global] user.name "[name]"
+$ git config [--global] user.email "[email address]"
+
+添加/删除文件(到暂存区，即add操作）
+#可以添加一个或多个
+$ git add <file1> <file2>...
+
+#添加所有修改的和新添加的
+$ git add .
+#另一种写法
+$ git add -A
+
+#添加指定目录
+$ git add <dirname>
+
+#由暂存区恢复到工作区（发现提交错了，退回一步）
+$ git reset HEAD <file> 
+
+#恢复上一次add提交的所有file
+$ git reset HEAD
+
+#撤销修改操作，恢复到修改之前的，撤销add后位于工作区下进行的
+$ git checkout -- <file>
+
+#删除文件,并将文件放入暂存区
+$ git rm <file1> <file2>
+#改文件名，并将修改后的文件放入暂存区
+$ git mv <file-original> <file-rename>
+
+
+提交到本地仓库（commit操作)
+#提交暂存区的所有文件(后面的message不可缺少)
+$ git commit -m <message>
+#提交暂存区的指定文件
+$ git commit <file1> <file2> -m <message>
+
+.gitignore的配置：
+
+缘由：当我们导入一个git项目时，开发环境会改变里面的一些配置，当我们修改完代码后，add，commit操作后，系统更改的配置信息，并不想去提交，这个时候就会用到这个配置，配置完成后，才更好的去add .和commit -m去操作。
+
+#要在Git BashHere这里面操作
+user@amelon MINGW64 ~/Desktop/git (master)
+$ touch .gitignore
+
+user@amelon MINGW64 ~/Desktop/git (master)
+$
+用法规则和语义：
+
+# 此为注释 – 将被 Git 忽略
+
+*.a       		# 忽略所有 .a 结尾的文件
+!lib.a    		# 但 lib.a 除外
+/TODO     	# 仅仅忽略项目根目录下的 TODO 文件，不包括 subdir/TODO
+build/    		# 忽略 build/ 目录下的所有文件
+doc/*.txt 		# 会忽略 doc/notes.txt 但不包括 doc/server/arch.txt
+
+
+注意：如果你是新加的，这里需要注意的是.gitignore只能作用于没有被track的文件，也就是工作区的文件，对于add，commit操作后的文件是没有作用的，这个时候需要先把本地的缓存删除，在去提交，就可以实现忽略整个仓库文件了。
+
+git rm -r --cached .
+git add .
+git commit -m 'update .gitignore'
