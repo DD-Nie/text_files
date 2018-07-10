@@ -1,4 +1,3 @@
-
 git reset HEAD file可以把暂缓区的内容清空防止错误的commit
 
 git reset --hard 234u4857 回退到指定目录的版本
@@ -15,11 +14,16 @@ git init 初始化仓库
 
 git rm test.txt 删除test.txt 并且保存 git commit -m “删除了test.txt”
 
-
-git remote rm origin 删除远程分支
+git remote rm origin 删除远程仓库
 git remote add origin git@github.com:DD-Nie/CheckOA.git 添加一个远程库叫origin的库
 要关联一个远程库，使用命令git remote add origin git@server-name:path/repo-name.git；
-关联后，使用命令git push -u origin master第一次推送master分支的所有内容；
+
+$ git fetch origin  //下载远程仓库内容
+$ git checkout -b serverfix origin/serverfix   //在origin/serverfix基础上 创建serverfix分支
+$git merge origin/serverfix 把远程分支的内容合并到当前分支上
+
+关联后，使用命令git push -u origin master第一次推送master分支的所有内容；-u表示 origin 为默认的远程仓库
+
 此后，每次本地提交后，只要有必要，就可以使用命令git push origin master推送最新修改；
 
 git clone git@github.com:michaelliao/gitskills.git 克隆代码仓库到本地
@@ -34,6 +38,8 @@ git checkout <name> 切换分支
 git checkout -b <name> 创建加切换分支
 git merge <name> 合并某分支到当前分支
 git branch -d <name> 删除某分支
+git branch -D <name> 强制删除某分支
+
 
 
 git pull 合并远程仓库的文件
@@ -46,7 +52,19 @@ git branch [branchname]:创建分支
 git checkout [branchname]:切换到某个分支
 git checkout -b [branchname]: 创建并且切换到新建的分支
 git branch -d [branchname]: 删除某个分支
+git branch -D [branchname]: 强制删除某个分支
 
+
+merge 部分文件
+因为 git 无法 merge 部分文件 所以可以进行分布操作
+如果想要将 A 分支的部分文件 merge 到 B分支 (A B 分支已经存在)
+git checkout B
+git checkout -b B-temp
+git merge A
+git checkout B
+git chekcout B-temp 文件1 文件2 文件3
+git add .
+git commit -m "merge 部分文件"
 
 
 
